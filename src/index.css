@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink text-ink-text font-body antialiased;
+  }
+  ::selection {
+    @apply bg-brass/20 text-brass-deep;
+  }
+  :focus-visible {
+    outline: 2px solid #0F4C81;
+    outline-offset: 2px;
+  }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #F3F5F8; }
+  ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+}
+
+@layer components {
+  /* Clean elevated card — used for account cards, loan cards, list panels */
+  .passbook {
+    @apply relative bg-paper text-ink-text rounded-xl border border-ink-3 shadow-card;
+  }
+
+  /* Section / form panel */
+  .ink-panel {
+    @apply relative bg-paper-2 border border-ink-3 rounded-xl p-6;
+  }
+
+  .field-line {
+    @apply flex items-center gap-2 border-b border-ink-3 py-2.5 last:border-b-0;
+  }
+
+  /* Standard solid buttons */
+  .stamp-btn {
+    @apply inline-flex items-center justify-center gap-2 font-display font-semibold text-sm
+      rounded-lg px-5 py-2.5 transition-colors duration-150
+      disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .stamp-btn-brass {
+    @apply stamp-btn bg-brass text-white hover:bg-brass-deep shadow-card;
+  }
+  .stamp-btn-emerald {
+    @apply stamp-btn bg-emerald text-white hover:bg-emerald-deep shadow-card;
+  }
+  .stamp-btn-oxblood {
+    @apply stamp-btn bg-oxblood text-white hover:bg-oxblood-deep shadow-card;
+  }
+  .stamp-btn-ghost {
+    @apply stamp-btn bg-white text-brass border border-ink-3 hover:bg-paper-3;
+  }
+
+  /* Status pill badges */
+  .seal {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-display
+      font-semibold;
+  }
+  .seal::before {
+    content: "";
+    @apply w-1.5 h-1.5 rounded-full;
+  }
+  .seal-approved { @apply seal bg-emerald/10 text-emerald-deep; }
+  .seal-approved::before { @apply bg-emerald; }
+  .seal-pending { @apply seal bg-amber-100 text-amber-700; }
+  .seal-pending::before { @apply bg-amber-500; }
+  .seal-rejected { @apply seal bg-oxblood/10 text-oxblood-deep; }
+  .seal-rejected::before { @apply bg-oxblood; }
+  .seal-closed { @apply seal bg-slate-100 text-slate-500; }
+  .seal-closed::before { @apply bg-slate-400; }
+
+  .input-vault {
+    @apply w-full bg-white border border-ink-3 rounded-lg px-4 py-2.5 text-ink-text placeholder-slate-400
+      text-sm focus:border-brass focus:ring-2 focus:ring-brass/15 outline-none transition-colors;
+  }
+
+  .label-vault {
+    @apply block text-xs font-medium text-slate-500 mb-1.5;
+  }
+}
