@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "https://trustbank-system-backend-1.onrender.com",
+  baseURL: import.meta.env.VITE_API_BASE_URL || "https://trustbank-system-backend.onrender.com",
   headers: { "Content-Type": "application/json" },
 });
 
